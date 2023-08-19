@@ -1,0 +1,27 @@
+grafana:
+    namespaceOverride: monitoring
+    operator:
+        enabled: true
+        scanAllNamespaces: true
+        prometheus:
+            serviceMonitor:
+                enabled: true
+        grafana:
+            enabled: true
+            dashboardLabelSelectors:
+                - matchLabels:
+                    app: grafana
+            persistance:
+                enabled: true
+                size: 5Gi
+prometheus:
+    namespaceOverride: monitoring
+    prometheus:
+        retention: 2d
+        persistance:
+            enabled: true
+            size: 5Gi
+    alertManager:
+        persistance:
+            enabled: true
+            size: 5Gi
